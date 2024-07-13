@@ -2,10 +2,10 @@ public class TrainDetails {
     @AuraEnabled
     public static TrainDetailsWrapper getTrainDetails(String trainNo){
         Http http = new Http();
-        HttpRequest req = new HttpRequest();
-        req.setEndPoint('https://rappid.in/apis/train.php?train_no='+trainNo);
-        req.setMethod('GET');
-        HttpResponse resp = http.send(req);
+        HttpRequest req1 = new HttpRequest();
+        req1.setEndPoint('https://rappid.in/apis/train.php?train_no='+trainNo);
+        req1.setMethod('GET');
+        HttpResponse resp = http.send(req1);
         TrainDetailsWrapper trDetWrap = new TrainDetailsWrapper();
         if(resp.getStatusCode() == 200){
             trDetWrap = (TrainDetailsWrapper)JSON.deserialize(resp.getBody(),TrainDetailsWrapper.class);
